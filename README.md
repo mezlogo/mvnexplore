@@ -14,7 +14,7 @@ This small cli can build a graph, simulate conflict resolution, download jar wit
 | command | args | description |
 | --- | --- | --- |
 | list | -r, --repo, --latest | List all dependencies in gradle like format from local |
-| info | -r, --repo, --latest, --pom, --dep | Print all information about  |
+| info | -r, --repo, --latest, --pom, --dep | Print all information about pom.xml Use ether path `--pom pom.xml` or `--dep org.springframework:spring-framework-bom:7.0.8'  |
 
 ## Options
 
