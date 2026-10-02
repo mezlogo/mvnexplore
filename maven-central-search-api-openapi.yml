@@ -1,0 +1,131 @@
+openapi: 3.2.0
+info:
+  title: Maven Central Search API
+  summary: Search artifact metadata in Maven Central Repository.
+  description: REST API for searching and retrieving metadata about artifacts in Maven Central. Backed by Solr, the API supports queries for groupId, artifactId, classnames, SHA-1 checksums, tags, and other attributes used to discover Java and other JVM-based libraries.
+  version: '1.0'
+  contact:
+    name: Sonatype Central
+    url: https://central.sonatype.org/search/rest-api-guide/
+  license:
+    name: Documentation Terms
+    url: https://central.sonatype.org/publish/terms/
+servers:
+- url: https://search.maven.org/solrsearch
+  description: Maven Central Solr search service
+tags:
+- name: Search
+paths:
+  /select:
+    get:
+      summary: Search Maven Central
+      description: Execute a Solr query against Maven Central. Use the `q` parameter with Solr field syntax to filter by groupId (`g:`), artifactId (`a:`), version (`v:`), classname (`c:`), fully-qualified classname (`fc:`), SHA-1 checksum (`1:`), or tags (`tags:`).
+      operationId: searchArtifacts
+      tags:
+      - Search
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: Solr query string.
+        schema:
+          type: string
+        example: g:com.google.inject+AND+a:guice
+      - name: rows
+        in: query
+        required: false
+        description: Maximum number of results to return.
+        schema:
+          type: integer
+          default: 20
+      - name: start
+        in: query
+        required: false
+        description: Result offset for pagination.
+        schema:
+          type: integer
+          default: 0
+      - name: wt
+        in: query
+        required: false
+        description: Response format.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      - name: core
+        in: query
+        required: false
+        description: Specific Solr core to search (for example, `gav` to list versions).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+components:
+  schemas:
+    ArtifactDoc:
+      type: object
+      properties:
+        id:
+          type: string
+        g:
+          type: string
+          description: groupId
+        a:
+          type: string
+          description: artifactId
+        v:
+          type: string
+          description: version
+        latestVersion:
+          type: string
+        repositoryId:
+          type: string
+        p:
+          type: string
+          description: packaging
+        timestamp:
+          type: integer
+          format: int64
+        versionCount:
+          type: integer
+        ec:
+          type: array
+          items:
+            type: string
+        tags:
+          type: array
+          items:
+            type: string
+    SearchResponse:
+      type: object
+      properties:
+        responseHeader:
+          type: object
+          properties:
+            status:
+              type: integer
+            QTime:
+              type: integer
+            params:
+              type: object
+              additionalProperties:
+                type: string
+        response:
+          type: object
+          properties:
+            numFound:
+              type: integer
+            start:
+              type: integer
+            docs:
+              type: array
+              items:
+                $ref: '#/components/schemas/ArtifactDoc'

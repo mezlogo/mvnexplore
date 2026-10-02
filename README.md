@@ -15,6 +15,7 @@ This small cli can build a graph, simulate conflict resolution, download jar wit
 | --- | --- | --- |
 | list | -r, --repo, --latest | List all dependencies in gradle like format from local |
 | info | -r, --repo, --latest, --pom, --dep | Print all information about pom.xml Use ether path `--pom pom.xml` or `--dep org.springframework:spring-framework-bom:7.0.8'  |
+| search | --group, --artifact | Search maven default url is `https://search.maven.org/solrsearch/select?q=g:io.micrometer&rows=200&wt=json`, list all dependencies. |
 
 ## Options
 
