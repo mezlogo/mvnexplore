@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-  implementation("org.jetbrains.kotlin:kotlin-serialization")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
   implementation("com.github.ajalt.clikt:clikt:5.1.0")
   implementation("org.apache.maven:maven-model:3.9.16")
 }

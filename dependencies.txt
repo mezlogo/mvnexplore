@@ -18,11 +18,9 @@ net.java.dev.jna:jna:5.14.0
 org.apache.maven:maven-model:3.9.16
 org.codehaus.plexus:plexus-utils:3.6.1
 org.jetbrains:annotations:13.0
-org.jetbrains.kotlin:kotlin-build-tools-api:2.4.20
-org.jetbrains.kotlin:kotlin-gradle-plugin-annotations:2.4.20
-org.jetbrains.kotlin:kotlin-gradle-plugin-api:2.4.20
-org.jetbrains.kotlin:kotlin-gradle-plugins-bom:2.4.20
-org.jetbrains.kotlin:kotlin-native-utils:2.4.20
 org.jetbrains.kotlin:kotlin-stdlib:2.4.20
-org.jetbrains.kotlin:kotlin-tooling-core:2.4.20
-org.jetbrains.kotlin:kotlin-util-io:2.4.20
+org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0
+org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0
+org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0
+org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0
+org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0
