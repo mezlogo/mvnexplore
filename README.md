@@ -1,6 +1,6 @@
 # mvnexplore
 
-Maven dependency format is a defactor standard for all jvm dependencies. You can use gradle, bazel, sbt however mvnrepo with pom.xml is an entry point for your framework of choice.
+Maven dependency format is a de-facto standard for all jvm dependencies. You can use gradle, bazel, sbt however mvnrepo with pom.xml is an entry point for your framework of choice.
 
 This small cli can build a graph, simulate conflict resolution, download jar with code or even sources - it's just simplifies dependencies related routines.
 
