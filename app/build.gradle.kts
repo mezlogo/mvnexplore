@@ -12,7 +12,7 @@ repositories {
 dependencies {
   implementation("org.jetbrains.kotlin:kotlin-serialization")
   implementation("com.github.ajalt.clikt:clikt:5.1.0")
-  implementation("io.github.pdvrieze.xmlutil:serialization:1.0.2.1")
+  implementation("org.apache.maven:maven-model:3.9.16")
 }
 
 spotless {

@@ -3,9 +3,7 @@ package mezlogo.mvnexplore.app
 
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
-import mezlogo.mvnexplore.app.command.DownloadCommand
 import mezlogo.mvnexplore.app.command.LocalCommand
-import mezlogo.mvnexplore.app.command.QueryCommand
 import mezlogo.mvnexplore.app.command.RootCommand
 
 object Main {
@@ -15,8 +13,6 @@ object Main {
     root
         .subcommands(
             LocalCommand(root),
-            QueryCommand(),
-            DownloadCommand(),
         )
         .main(args)
   }
