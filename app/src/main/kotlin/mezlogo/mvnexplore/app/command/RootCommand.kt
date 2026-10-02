@@ -6,45 +6,51 @@ import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.path
 import java.nio.file.Path
+import org.slf4j.LoggerFactory
 
 class RootCommand : CliktCommand(name = "mvnexplore") {
-  val settings: Path? by
-      option(
-          "-s",
-          "--settings",
-          help = "Path to settings.xml",
-      )
-      .path()
+    private val log = LoggerFactory.getLogger(RootCommand::class.java)
 
-  val repo: Path by
-      option(
-          "-r",
-          "--repo",
-          help = "Path to local maven repository",
-      )
-      .path()
-      .default(Path.of(System.getProperty("user.home"), ".m2", "repository"))
+    val settings: Path? by
+        option(
+            "-s",
+            "--settings",
+            help = "Path to settings.xml",
+        )
+        .path()
 
-  val url: String? by
-      option(
-          "-u",
-          "--url",
-          help = "URL to remote maven repository",
-      )
+    val repo: Path by
+        option(
+            "-r",
+            "--repo",
+            help = "Path to local maven repository",
+        )
+        .path()
+        .default(Path.of(System.getProperty("user.home"), ".m2", "repository"))
 
-  val username: String? by
-      option(
-          "--username",
-          help = "Optional username",
-      )
+    val url: String? by
+        option(
+            "-u",
+            "--url",
+            help = "URL to remote maven repository",
+        )
 
-  val password: String? by
-      option(
-          "--password",
-          help = "Optional password",
-      )
+    val username: String? by
+        option(
+            "--username",
+            help = "Optional username",
+        )
 
-  override fun run() = Unit
+    val password: String? by
+        option(
+            "--password",
+            help = "Optional password",
+        )
+
+    override fun run() {
+        log.trace("RootCommand parsed options: settings={}, repo={}, url={}, username={}, passwordProvided={}",
+            settings, repo, url, username, password != null)
+    }
 }
 
-  
+    
