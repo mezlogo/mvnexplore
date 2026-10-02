@@ -4,10 +4,16 @@ package mezlogo.mvnexplore.app.command
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
-import java.nio.file.Files
-import kotlin.io.path.*
+import kotlin.io.path.exists
+import kotlin.io.path.isDirectory
+import mezlogo.mvnexplore.core.localrepo.ListArtifactsCommand
+import mezlogo.mvnexplore.core.localrepo.LocalRepoUseCase
+import mezlogo.mvnexplore.core.localrepo.LocalRepositoryConfig
 
-class LocalCommand(private val root: RootCommand) : CliktCommand(name = "local") {
+class LocalCommand(
+    private val root: RootCommand,
+    private val localRepoUseCase: LocalRepoUseCase,
+) : CliktCommand(name = "local") {
   private val latest: Boolean by
       option(
           "--latest",
@@ -22,28 +28,21 @@ class LocalCommand(private val root: RootCommand) : CliktCommand(name = "local")
       return
     }
 
-    val deps = mutableMapOf<String, String>()
-    Files.walk(repo).use { stream ->
-      stream
-          .filter { it.isRegularFile() && it.extension == "pom" }
-          .forEach { pom ->
-            val relative = repo.relativize(pom.parent)
-            val parts = relative.map { it.toString() }
-            if (parts.size >= 3) {
-              val version = parts.last()
-              val artifact = parts[parts.size - 2]
-              val group = parts.subList(0, parts.size - 2).joinToString(".")
-              val key = "$group:$artifact"
-              if (!latest || !deps.containsKey(key)) {
-                deps[key] = version
-              } else {
-                deps[key] = version
-              }
-            }
-          }
-    }
+    val artifacts =
+        localRepoUseCase.selectArtifacts(
+            LocalRepositoryConfig(repo),
+            ListArtifactsCommand(
+                includeGlobGroupIds = emptyList(),
+                excludeGlobGroupIds = emptyList(),
+                includeGlobArtifactIds = emptyList(),
+                excludeGlobArtifactIds = emptyList(),
+                onlyLatestVersions = latest,
+            ),
+        )
 
-    deps.entries.sortedBy { it.key }.forEach { (key, version) -> echo("$key:$version") }
+    artifacts
+        .sortedWith(compareBy({ it.groupId }, { it.artifactId }, { it.version }))
+        .forEach { echo("${it.groupId}:${it.artifactId}:${it.version}") }
   }
 }
 
