@@ -6,14 +6,15 @@ This small cli can build a graph, simulate conflict resolution, download jar wit
 
 ## Features
 
-- traverse local maven repository
-- query and download dependencies from remote
+- fast traverse local maven repository using only filesystem operations
+- parse pom.xml and pretty print info about dep: group, artifact, version, description, parent, properties, dependencies, optionals, bom
 
 ## Commands
 
 | command | args | description |
 | --- | --- | --- |
-| local | -r, --repo, --latest | List all dependencies in gradle like format from local |
+| list | -r, --repo, --latest | List all dependencies in gradle like format from local |
+| info | -r, --repo, --latest, --pom, --dep | Print all information about  |
 
 ## Options
 
