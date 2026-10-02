@@ -1,11 +1,11 @@
-
-package mezlogo.mvnexplore.core.pom.impl
+package mezlogo.mvnexplore.adapter.out.pom
 
 import java.nio.file.Files
 import java.nio.file.Path
-import mezlogo.mvnexplore.core.pom.PomInfo
-import mezlogo.mvnexplore.core.pom.PomInfoUseCase
+import mezlogo.mvnexplore.port.out.pom.PomInfo
+import mezlogo.mvnexplore.port.out.pom.PomInfoUseCase
 import mezlogo.mvnexplore.port.model.MavenArtifact
+import org.apache.maven.model.Dependency
 import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 
@@ -34,7 +34,7 @@ class PomInfoService : PomInfoUseCase {
         )
     }
 
-    private fun org.apache.maven.model.Dependency.toMavenArtifact(): MavenArtifact =
+    private fun Dependency.toMavenArtifact(): MavenArtifact =
         MavenArtifact(
             groupId = groupId ?: "",
             artifactId = artifactId ?: "",

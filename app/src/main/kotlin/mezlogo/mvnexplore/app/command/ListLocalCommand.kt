@@ -9,9 +9,9 @@ import com.github.ajalt.clikt.parameters.types.path
 import java.nio.file.Path
 import kotlin.io.path.exists
 import kotlin.io.path.isDirectory
-import mezlogo.mvnexplore.core.localrepo.ListArtifactsCommand
-import mezlogo.mvnexplore.core.localrepo.LocalRepoUseCase
-import mezlogo.mvnexplore.core.localrepo.LocalRepositoryConfig
+import mezlogo.mvnexplore.port.out.localrepo.ListArtifactsCommand
+import mezlogo.mvnexplore.port.out.localrepo.LocalRepoUseCase
+import mezlogo.mvnexplore.port.out.localrepo.LocalRepositoryConfig
 
 class ListLocalCommand(
     private val root: RootCommand,

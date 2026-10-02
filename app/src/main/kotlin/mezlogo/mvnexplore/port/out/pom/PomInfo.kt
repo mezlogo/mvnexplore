@@ -1,5 +1,4 @@
-
-package mezlogo.mvnexplore.core.pom
+package mezlogo.mvnexplore.port.out.pom
 
 import mezlogo.mvnexplore.port.model.MavenArtifact
 

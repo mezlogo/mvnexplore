@@ -1,4 +1,4 @@
-package mezlogo.mvnexplore.core.localrepo
+package mezlogo.mvnexplore.port.out.localrepo
 
 import mezlogo.mvnexplore.port.model.MavenArtifact
 

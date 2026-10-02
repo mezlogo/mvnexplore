@@ -7,7 +7,7 @@ import com.github.ajalt.clikt.parameters.types.path
 import java.nio.file.Path
 import kotlin.io.path.exists
 import kotlin.io.path.isRegularFile
-import mezlogo.mvnexplore.core.pom.PomInfoUseCase
+import mezlogo.mvnexplore.port.out.pom.PomInfoUseCase
 
 class InfoCommand(
     private val root: RootCommand,

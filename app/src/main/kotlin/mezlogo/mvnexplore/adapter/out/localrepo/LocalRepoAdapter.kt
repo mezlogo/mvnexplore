@@ -1,18 +1,17 @@
-
-package mezlogo.mvnexplore.core.localrepo.impl
+package mezlogo.mvnexplore.adapter.out.localrepo
 
 import java.nio.file.Files
 import kotlin.io.path.extension
 import kotlin.io.path.isRegularFile
-import mezlogo.mvnexplore.core.localrepo.ListArtifactsCommand
-import mezlogo.mvnexplore.core.localrepo.LocalRepoUseCase
-import mezlogo.mvnexplore.core.localrepo.LocalRepositoryConfig
+import mezlogo.mvnexplore.port.out.localrepo.ListArtifactsCommand
+import mezlogo.mvnexplore.port.out.localrepo.LocalRepoUseCase
+import mezlogo.mvnexplore.port.out.localrepo.LocalRepositoryConfig
 import mezlogo.mvnexplore.port.model.MavenArtifact
 
 /**
  * Use only file names, don't read pom.xml at all, however check that pom.xml is here.
  */
-class LocalRepoService : LocalRepoUseCase {
+class LocalRepoAdapter : LocalRepoUseCase {
     override fun selectArtifacts(
         localRepositoryConfig: LocalRepositoryConfig,
         listArtifactsCommand: ListArtifactsCommand

@@ -1,4 +1,4 @@
-package mezlogo.mvnexplore.core.localrepo
+package mezlogo.mvnexplore.port.out.localrepo
 
 /**
  * Traverse local maven repository and select by given filters.
