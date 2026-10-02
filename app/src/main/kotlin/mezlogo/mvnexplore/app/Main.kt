@@ -1,6 +1,7 @@
 
 package mezlogo.mvnexplore.app
 
+import com.github.ajalt.clikt.completion.completionOption
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
 import mezlogo.mvnexplore.app.command.LocalCommand
@@ -14,6 +15,7 @@ object Main {
         .subcommands(
             LocalCommand(root),
         )
+        .completionOption()
         .main(args)
   }
 }
