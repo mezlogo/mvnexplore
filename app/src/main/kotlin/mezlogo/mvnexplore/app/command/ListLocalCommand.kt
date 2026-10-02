@@ -5,7 +5,6 @@ import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.options.split
 import com.github.ajalt.clikt.parameters.types.path
 import java.nio.file.Path
 import kotlin.io.path.exists
@@ -14,10 +13,10 @@ import mezlogo.mvnexplore.core.localrepo.ListArtifactsCommand
 import mezlogo.mvnexplore.core.localrepo.LocalRepoUseCase
 import mezlogo.mvnexplore.core.localrepo.LocalRepositoryConfig
 
-class LocalCommand(
+class ListLocalCommand(
     private val root: RootCommand,
     private val localRepoUseCase: LocalRepoUseCase,
-) : CliktCommand(name = "local") {
+) : CliktCommand(name = "list") {
   private val latest: Boolean by
       option(
           "--latest",

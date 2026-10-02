@@ -4,7 +4,7 @@ package mezlogo.mvnexplore.app
 import com.github.ajalt.clikt.completion.completionOption
 import com.github.ajalt.clikt.core.main
 import com.github.ajalt.clikt.core.subcommands
-import mezlogo.mvnexplore.app.command.LocalCommand
+import mezlogo.mvnexplore.app.command.ListLocalCommand
 import mezlogo.mvnexplore.app.command.RootCommand
 import mezlogo.mvnexplore.core.localrepo.impl.LocalRepoService
 
@@ -15,7 +15,7 @@ object Main {
     val root = RootCommand()
     root
         .subcommands(
-            LocalCommand(root, localRepoUseCase),
+            ListLocalCommand(root, localRepoUseCase),
         )
         .completionOption()
         .main(args)
