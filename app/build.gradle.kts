@@ -30,6 +30,6 @@ spotless {
 }
 
 application {
-  mainClass.set("mezlogo.mvnexplore.app.Main")
+  mainClass.set("mezlogo.mvnexplore.application.Main")
   applicationDefaultJvmArgs = listOf("--enable-native-access=ALL-UNNAMED")
 }
