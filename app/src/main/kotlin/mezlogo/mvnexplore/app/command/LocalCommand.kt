@@ -3,7 +3,11 @@ package mezlogo.mvnexplore.app.command
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
+import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
+import com.github.ajalt.clikt.parameters.options.split
+import com.github.ajalt.clikt.parameters.types.path
+import java.nio.file.Path
 import kotlin.io.path.exists
 import kotlin.io.path.isDirectory
 import mezlogo.mvnexplore.core.localrepo.ListArtifactsCommand
@@ -21,21 +25,57 @@ class LocalCommand(
       )
       .flag()
 
+  private val repo: Path? by
+      option(
+          "-r",
+          "--repo",
+          help = "Path to local maven repository",
+      )
+      .path()
+
+  private val includeGroupIds: List<String> by
+      option(
+          "--include-group",
+          help = "Include group id glob (repeatable or comma separated)",
+      )
+      .multiple()
+
+  private val excludeGroupIds: List<String> by
+      option(
+          "--exclude-group",
+          help = "Exclude group id glob (repeatable or comma separated)",
+      )
+      .multiple()
+
+  private val includeArtifactIds: List<String> by
+      option(
+          "--include-artifact",
+          help = "Include artifact id glob (repeatable or comma separated)",
+      )
+      .multiple()
+
+  private val excludeArtifactIds: List<String> by
+      option(
+          "--exclude-artifact",
+          help = "Exclude artifact id glob (repeatable or comma separated)",
+      )
+      .multiple()
+
   override fun run() {
-    val repo = root.repo
-    if (!repo.exists() || !repo.isDirectory()) {
-      echo("Repository not found: $repo")
+    val resolvedRepo = repo ?: root.repo
+    if (!resolvedRepo.exists() || !resolvedRepo.isDirectory()) {
+      echo("Repository not found: $resolvedRepo")
       return
     }
 
     val artifacts =
         localRepoUseCase.selectArtifacts(
-            LocalRepositoryConfig(repo),
+            LocalRepositoryConfig(resolvedRepo),
             ListArtifactsCommand(
-                includeGlobGroupIds = emptyList(),
-                excludeGlobGroupIds = emptyList(),
-                includeGlobArtifactIds = emptyList(),
-                excludeGlobArtifactIds = emptyList(),
+                includeGlobGroupIds = includeGroupIds,
+                excludeGlobGroupIds = excludeGroupIds,
+                includeGlobArtifactIds = includeArtifactIds,
+                excludeGlobArtifactIds = excludeArtifactIds,
                 onlyLatestVersions = latest,
             ),
         )
