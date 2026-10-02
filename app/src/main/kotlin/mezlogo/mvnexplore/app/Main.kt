@@ -8,13 +8,13 @@ import mezlogo.mvnexplore.app.command.InfoCommand
 import mezlogo.mvnexplore.app.command.ListLocalCommand
 import mezlogo.mvnexplore.app.command.RootCommand
 import mezlogo.mvnexplore.adapter.out.localrepo.LocalRepoAdapter
-import mezlogo.mvnexplore.adapter.out.pom.PomInfoService
+import mezlogo.mvnexplore.adapter.out.pom.PomInfoAdapter
 
 object Main {
   @JvmStatic
   fun main(args: Array<String>) {
     val localRepoUseCase = LocalRepoAdapter()
-    val pomInfoUseCase = PomInfoService()
+    val pomInfoUseCase = PomInfoAdapter()
     val root = RootCommand()
     root
         .subcommands(

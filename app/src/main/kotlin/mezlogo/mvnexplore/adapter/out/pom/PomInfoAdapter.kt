@@ -9,7 +9,7 @@ import org.apache.maven.model.Dependency
 import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 
-class PomInfoService : PomInfoUseCase {
+class PomInfoAdapter : PomInfoUseCase {
     override fun readPomInfo(pomPath: Path): PomInfo {
         val model = Files.newBufferedReader(pomPath).use { reader ->
             MavenXpp3Reader().read(reader)
