@@ -11,5 +11,3 @@ data class PomInfo(
     val dependencies: List<MavenArtifact>,
     val bom: List<MavenArtifact>,
 )
-
-    
