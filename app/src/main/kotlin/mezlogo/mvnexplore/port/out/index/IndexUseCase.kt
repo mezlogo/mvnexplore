@@ -1,10 +1,7 @@
 package mezlogo.mvnexplore.port.out.index
 
-import mezlogo.mvnexplore.port.model.MavenArtifact
+import java.nio.file.Path
 
 interface IndexUseCase {
-  fun selectArtifacts(
-      indexConfig: IndexConfig,
-      listArtifactsCommand: ListArtifactsCommand,
-  ): List<MavenArtifact>
+  fun createGroupAndArtifactId(indexConfig: IndexConfig, indexToCreate: Path): String
 }

@@ -24,7 +24,7 @@ object Main {
             LocalCommand(root, localRepoUseCase),
             InfoCommand(root, pomInfoUseCase),
             SearchCommand(root, searchIndexUseCase),
-            IndexCommand(root, indexUseCase),
+            CreateIndexCommand(root, indexUseCase),
         )
         .completionOption()
         .main(args)

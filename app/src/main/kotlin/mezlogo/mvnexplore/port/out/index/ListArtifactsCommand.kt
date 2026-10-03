@@ -15,4 +15,6 @@ data class ListArtifactsCommand(
     val excludeGlobArtifactIds: List<String>,
     /** When true use simple major version detection for printing smaller output. */
     val onlyLatestVersions: Boolean,
+    /** When not null parse and filter by last update timestamp. */
+    val tookOnlyUpdatedAfterTimestamps: Long?,
 )
