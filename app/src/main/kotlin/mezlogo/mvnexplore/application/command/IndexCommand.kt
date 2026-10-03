@@ -1,4 +1,4 @@
-package mezlogo.mvnindex.application.command
+package mezlogo.mvnexplore.application.command
 
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.flag
@@ -7,14 +7,14 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.path
 import java.nio.file.Path
-import mezlogo.mvnindex.port.out.index.IndexConfig
-import mezlogo.mvnindex.port.out.index.IndexUseCase
-import mezlogo.mvnindex.port.out.index.ListArtifactsCommand
+import mezlogo.mvnexplore.port.out.index.IndexConfig
+import mezlogo.mvnexplore.port.out.index.IndexUseCase
+import mezlogo.mvnexplore.port.out.index.ListArtifactsCommand
 
-class ListCommand(
+class IndexCommand(
     private val root: RootCommand,
     private val indexUseCase: IndexUseCase,
-) : CliktCommand(name = "list") {
+) : CliktCommand(name = "index") {
   private val index: Path by
       option("-i", "--index", help = "Path to local maven repository index gzip file")
           .path()

@@ -12,10 +12,10 @@ import mezlogo.mvnexplore.port.out.localrepo.ListArtifactsCommand
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepoUseCase
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepositoryConfig
 
-class ListLocalCommand(
+class LocalCommand(
     private val root: RootCommand,
     private val localRepoUseCase: LocalRepoUseCase,
-) : CliktCommand(name = "list") {
+) : CliktCommand(name = "local") {
 
   private val latest: Boolean by
       option(

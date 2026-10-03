@@ -1,6 +1,6 @@
-package mezlogo.mvnindex.port.out.index
+package mezlogo.mvnexplore.port.out.index
 
-import mezlogo.mvnindex.port.model.MavenArtifact
+import mezlogo.mvnexplore.port.model.MavenArtifact
 
 interface IndexUseCase {
   fun selectArtifacts(

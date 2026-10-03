@@ -1,10 +1,10 @@
-package mezlogo.mvnindex.adapter.out.index
+package mezlogo.mvnexplore.adapter.out.index
 
 import java.nio.file.Files
-import mezlogo.mvnindex.port.model.MavenArtifact
-import mezlogo.mvnindex.port.out.index.IndexConfig
-import mezlogo.mvnindex.port.out.index.IndexUseCase
-import mezlogo.mvnindex.port.out.index.ListArtifactsCommand
+import mezlogo.mvnexplore.port.model.MavenArtifact
+import mezlogo.mvnexplore.port.out.index.IndexConfig
+import mezlogo.mvnexplore.port.out.index.IndexUseCase
+import mezlogo.mvnexplore.port.out.index.ListArtifactsCommand
 import org.apache.maven.index.reader.ChunkReader
 
 class MavenIndexAdapter : IndexUseCase {

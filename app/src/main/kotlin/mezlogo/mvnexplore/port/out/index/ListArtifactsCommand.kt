@@ -1,4 +1,4 @@
-package mezlogo.mvnindex.port.out.index
+package mezlogo.mvnexplore.port.out.index
 
 /** Traverse local maven repository and select by given filters. */
 data class ListArtifactsCommand(

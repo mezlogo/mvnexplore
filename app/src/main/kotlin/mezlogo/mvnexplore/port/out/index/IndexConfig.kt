@@ -1,4 +1,4 @@
-package mezlogo.mvnindex.port.out.index
+package mezlogo.mvnexplore.port.out.index
 
 import java.nio.file.Path
 
