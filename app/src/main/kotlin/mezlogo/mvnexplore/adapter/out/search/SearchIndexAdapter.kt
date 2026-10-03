@@ -1,17 +1,17 @@
 package mezlogo.mvnexplore.adapter.out.search
 
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import mezlogo.mvnexplore.port.model.MavenArtifact
-import mezlogo.mvnexplore.port.out.search.SearchArtifactsRequest
-import mezlogo.mvnexplore.port.out.search.SearchIndexUseCase
-import org.slf4j.LoggerFactory
 import java.net.URI
 import java.net.URLEncoder
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.nio.charset.StandardCharsets
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
+import mezlogo.mvnexplore.port.model.MavenArtifact
+import mezlogo.mvnexplore.port.out.search.SearchArtifactsRequest
+import mezlogo.mvnexplore.port.out.search.SearchIndexUseCase
+import org.slf4j.LoggerFactory
 
 /** Uses the Maven Central Solr API documented in maven-central-search-api-openapi.yml. */
 class SearchIndexAdapter(

@@ -5,13 +5,13 @@ import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.multiple
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.path
+import java.nio.file.Path
+import kotlin.io.path.exists
+import kotlin.io.path.isDirectory
 import mezlogo.mvnexplore.port.out.localrepo.ListArtifactsCommand
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepoUseCase
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepositoryConfig
 import org.slf4j.LoggerFactory
-import java.nio.file.Path
-import kotlin.io.path.exists
-import kotlin.io.path.isDirectory
 
 class ListLocalCommand(
     private val root: RootCommand,

@@ -22,6 +22,7 @@ dependencies {
 
   // Domain: maven model
   implementation("org.apache.maven:maven-model:3.9.16")
+  implementation("org.apache.maven.indexer:indexer-reader:7.1.6")
 }
 
 spotless {

@@ -1,15 +1,15 @@
 package mezlogo.mvnexplore.application.command
 
 import ch.qos.logback.classic.Level
+import ch.qos.logback.classic.Logger as LogbackLogger
 import com.github.ajalt.clikt.core.CliktCommand
 import com.github.ajalt.clikt.parameters.options.default
 import com.github.ajalt.clikt.parameters.options.flag
 import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.types.path
+import java.nio.file.Path
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import java.nio.file.Path
-import ch.qos.logback.classic.Logger as LogbackLogger
 
 class RootCommand : CliktCommand(name = "mvnexplore") {
   private val log = LoggerFactory.getLogger(RootCommand::class.java)

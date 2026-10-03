@@ -25,3 +25,26 @@ This small cli can build a graph, simulate conflict resolution, download jar wit
 - `--username` optional username
 - `--password` optional password
 
+# mvnindex
+
+Tiny cli for query local maven index.
+
+## Features
+
+- provide autocomplete for groupId, artifactId, version
+- list artifacts for given groupId
+- output details about artifact
+- explore repository, IT'S FUN!
+
+## Commands
+
+| command | args | description |
+| --- | --- | --- |
+| list | -i, --index, --latest, -g, -a, -v, --completion | Filter and list all dependencies |
+| info | -i, --index, --latest, -g, -a, -v | Show details for given dependencies |
+
+## Options
+
+- `-i, --index` path to index
+- `--latest` show only latest version
+- `-g, -a, -v` filter by given glob like expressions
