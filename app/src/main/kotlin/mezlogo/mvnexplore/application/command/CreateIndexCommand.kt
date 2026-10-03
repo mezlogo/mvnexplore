@@ -7,10 +7,10 @@ import com.github.ajalt.clikt.parameters.options.option
 import com.github.ajalt.clikt.parameters.options.required
 import com.github.ajalt.clikt.parameters.types.int
 import com.github.ajalt.clikt.parameters.types.path
-import java.nio.file.Path
 import mezlogo.mvnexplore.port.out.index.IndexConfig
 import mezlogo.mvnexplore.port.out.index.IndexUseCase
 import mezlogo.mvnexplore.port.out.index.ListArtifactsCommand
+import java.nio.file.Path
 
 class CreateIndexCommand(
     private val root: RootCommand,
@@ -39,7 +39,11 @@ class CreateIndexCommand(
   override fun run() {
     val indexConfig = IndexConfig(pathToIndexGzip = index)
 
-    TODO("If not null calculate timestamp for given last days ago")
+    val updatedAfterTimestamp: Long? = tookLastDays?.let { days ->
+      val now = System.currentTimeMillis()
+      val millisPerDay = 24L * 60L * 60L * 1000L
+      now - days.toLong() * millisPerDay
+    }
 
     val command =
         ListArtifactsCommand(
@@ -49,7 +53,7 @@ class CreateIndexCommand(
             excludeGlobArtifactIds = emptyList(),
             includeGlobVersions = versions,
             onlyLatestVersions = latest,
-            tookOnlyUpdatedAfterTimestamps = TODO(""),
+            tookOnlyUpdatedAfterTimestamps = updatedAfterTimestamp,
         )
     indexUseCase.createGroupAndArtifactId(indexConfig, output)
   }
