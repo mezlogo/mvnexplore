@@ -11,13 +11,11 @@ import kotlin.io.path.isDirectory
 import mezlogo.mvnexplore.port.out.localrepo.ListArtifactsCommand
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepoUseCase
 import mezlogo.mvnexplore.port.out.localrepo.LocalRepositoryConfig
-import org.slf4j.LoggerFactory
 
 class ListLocalCommand(
     private val root: RootCommand,
     private val localRepoUseCase: LocalRepoUseCase,
 ) : CliktCommand(name = "list") {
-  private val log = LoggerFactory.getLogger(ListLocalCommand::class.java)
 
   private val latest: Boolean by
       option(
@@ -63,21 +61,11 @@ class ListLocalCommand(
           .multiple()
 
   override fun run() {
-    root.applyVerboseLogging()
 
-    log.trace(
-        "Running ListLocalCommand with latest={}, repo={}, includeGroupIds={}, excludeGroupIds={}, includeArtifactIds={}, excludeArtifactIds={}",
-        latest,
-        repo,
-        includeGroupIds,
-        excludeGroupIds,
-        includeArtifactIds,
-        excludeArtifactIds,
-    )
     val resolvedRepo = repo ?: root.repo
-    log.trace("Resolved repo: {}", resolvedRepo)
+
     if (!resolvedRepo.exists() || !resolvedRepo.isDirectory()) {
-      log.trace("Repository not found or not a directory: {}", resolvedRepo)
+
       echo("Repository not found: $resolvedRepo")
       return
     }
@@ -90,16 +78,14 @@ class ListLocalCommand(
             excludeGlobArtifactIds = excludeArtifactIds,
             onlyLatestVersions = latest,
         )
-    log.trace("Created ListArtifactsCommand: {}", command)
+
     val config = LocalRepositoryConfig(resolvedRepo)
-    log.trace("Created LocalRepositoryConfig: {}", config)
+
     val artifacts = localRepoUseCase.selectArtifacts(config, command)
-    log.trace("Received artifacts: {}", artifacts)
 
     val sorted = artifacts.sortedWith(compareBy({ it.groupId }, { it.artifactId }, { it.version }))
-    log.trace("Sorted artifacts: {}", sorted)
+
     sorted.forEach {
-      log.trace("Printing artifact: {}", it)
       echo("${it.groupId}:${it.artifactId}:${it.version}")
     }
   }

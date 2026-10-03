@@ -17,8 +17,8 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0")
 
   // LOGGING
-  implementation("org.slf4j:slf4j-api:2.0.20")
-  implementation("ch.qos.logback:logback-classic:1.6.4")
+  //  implementation("org.slf4j:slf4j-api:2.0.20")
+  //  implementation("ch.qos.logback:logback-classic:1.6.4")
 
   // Domain: maven model
   implementation("org.apache.maven:maven-model:3.9.16")
@@ -26,7 +26,11 @@ dependencies {
 }
 
 spotless {
-  kotlin { ktfmt() }
+  kotlin {
+    ktfmt()
+    trimTrailingWhitespace()
+    endWithNewline()
+  }
   kotlinGradle { ktfmt() }
 }
 
